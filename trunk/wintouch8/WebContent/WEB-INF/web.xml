@@ -30,24 +30,24 @@
             <param-value>true</param-value>
         </init-param>
         
-        <!-- desktop api start -->
+        <!-- Wintouch api start -->
         <init-param>
             <param-name>apis</param-name>
-            <param-value>desktop</param-value>
+            <param-value>Wintouch</param-value>
         </init-param>
         <init-param>
-            <param-name>desktop.apiFile</param-name>
-            <param-value>direct/DesktopApi.js</param-value>
+            <param-name>Wintouch.apiFile</param-name>
+            <param-value>direct/WintouchApi.js</param-value>
         </init-param>
         <init-param>
-            <param-name>desktop.apiNamespace</param-name>
+            <param-name>Wintouch.apiNamespace</param-name>
             <param-value>Wintouch.app</param-value>
         </init-param>
         <init-param>
-            <param-name>desktop.classes</param-name>
-            <param-value>com.touchtone.action.TestAction</param-value>
+            <param-name>Wintouch.classes</param-name>
+            <param-value>com.touchtone.direct.TestAction</param-value>
         </init-param>
-        <!-- desktop api end -->
+        <!-- Wintouch api end -->
         
         <load-on-startup>1</load-on-startup>
     </servlet>

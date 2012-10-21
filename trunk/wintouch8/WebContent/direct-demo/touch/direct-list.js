@@ -26,7 +26,7 @@ Ext.application({
      * If the user is not on a phone, we wrap the list inside a panel which is centered on the page.
      */
     launch: function() {
-        Ext.direct.Manager.addProvider(Ext.app.REMOTING_API);
+        Ext.direct.Manager.addProvider(Wintouch.app.REMOTING_API);
 
         //get the configuration for the list
         var listConfiguration = this.getListConfiguration();

@@ -11,7 +11,7 @@ Ext.define('Company', {
 });
 
 Ext.onReady(function() {    
-    Ext.direct.Manager.addProvider(Ext.app.REMOTING_API);
+    Ext.direct.Manager.addProvider(Wintouch.app.REMOTING_API);
     
     // create the Grid
     var grid = Ext.create('Ext.grid.Panel', {
