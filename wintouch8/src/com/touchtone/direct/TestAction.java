@@ -5,11 +5,22 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import com.softwarementors.extjs.djn.config.annotations.DirectMethod;
+import com.softwarementors.extjs.djn.servlet.ssm.WebContext;
+import com.softwarementors.extjs.djn.servlet.ssm.WebContextManager;
 
 public class TestAction {
 	@DirectMethod
 	public DataStore getGrid(Map params) {
+		WebContext context = WebContextManager.get();
+		
+		HttpSession session = context.getSession();
+		HttpServletRequest request = context.getRequest();
+		ServletContext application = context.getServletContext();		
 		
 		DataStore store = new DataStore();
 		
