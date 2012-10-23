@@ -256,4 +256,11 @@ public class DALServiceImpl implements DALService {
 		return null;
 	}
 
+	@Override
+	public PersistenceObject getPersistenceObjectInst(WTObject wtObj) {
+		
+		PersistenceObject po = this.ddlManager.createPersistenceObject(wtObj);
+		return po;
+	}
+
 }
