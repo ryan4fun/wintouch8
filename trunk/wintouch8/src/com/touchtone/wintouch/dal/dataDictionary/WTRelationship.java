@@ -2,6 +2,12 @@ package com.touchtone.wintouch.dal.dataDictionary;
 
 public class WTRelationship {
 
+	
+	public final static int RELATION_TYPE_ONE_TO_MANY = 1;
+	public final static int RELATION_TYPE_ONE_TO_ONE = 2;
+	public final static int RELATION_TYPE_MANY_TO_ONE = 4;
+	public final static int RELATION_TYPE_MANY_TO_MANY = 8;
+	
 	private long id;
 	private String name;
 	private String description;
@@ -9,6 +15,7 @@ public class WTRelationship {
 	private WTObject destObject;
 	private int srcMultiplicity;
 	private int destMultiplicity;
+	private int relationshipType;
 	
 	public WTRelationship(){
 		
@@ -72,5 +79,14 @@ public class WTRelationship {
 		this.destMultiplicity = destMultiplicity;
 	}
 	
+	public void setRelationshipType(int type){
+		
+		this.relationshipType = type;
+	}
+	
+	public int getRelationshipType(){
+		
+		return relationshipType;
+	}
 	
 }
