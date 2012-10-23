@@ -1,0 +1,40 @@
+.add-icon {
+	background-image: url(../images/add_16.png);
+}
+
+.history-icon {
+	background-image: url(../images/history_16.png);
+}
+
+.list-item {
+	padding: 1px 10px 1px 10px;
+	font-size: 11px;
+	line-height: 24px;
+	cursor: pointer;
+}
+
+.list-item img {
+	margin-bottom: -5px;
+	margin-right: 9px;
+	width: 24px;
+	height: 24x;
+}
+
+.list-item-selected {
+	font-weight: bold;
+	color: #333333;
+	background-color: #E0E0E0;
+}
+
+.list-item-hover {
+	background-color: #E6E6E6;
+}
+
+.recent-view {
+	background-color: #F6F6F6;
+}
+
+.recent-view .list-item {
+	color: #666;
+	text-decoration: underline;
+}
