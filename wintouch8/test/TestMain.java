@@ -14,6 +14,7 @@ import com.touchtone.wintouch.dal.Configuration;
 import com.touchtone.wintouch.dal.DALService;
 import com.touchtone.wintouch.dal.dataDictionary.WTAttribute;
 import com.touchtone.wintouch.dal.dataDictionary.WTObject;
+import com.touchtone.wintouch.dal.entityManager.PersistenceObject;
 
 
 public class TestMain {
@@ -84,6 +85,29 @@ public class TestMain {
 //		}
 		
 		
+		
+	}
+	
+	
+	public void testInsertData(){
+		
+		
+		Configuration conf = new Configuration();
+		
+		boolean result = conf.init();
+		
+		if(conf.isInitialized()){
+			DALService dalService = conf.getDALService();
+			
+			WTObject wtObj = dalService.getWTObjectByName("Test");
+			
+			PersistenceObject po = dalService.getPersistenceObjectInst(wtObj);
+			
+			po.set("col1", 22);
+			po.set("col2", "Tanrui");
+			
+			dalService.insertData(po);
+		}
 		
 	}
 
