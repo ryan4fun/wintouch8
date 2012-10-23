@@ -20,6 +20,7 @@ public interface DALService {
 	public PersistenceObject updateData(PersistenceObject pObj);
 	public PersistenceObject loadData(PersistenceObject pObj);
 	public PersistenceObject loadData(String id,WTObject wtObj);
+	public PersistenceObject getPersistenceObjectInst(WTObject wtObj);
 	
 	public List<DynaBean> QueryData(String Sql,List params);
 	
