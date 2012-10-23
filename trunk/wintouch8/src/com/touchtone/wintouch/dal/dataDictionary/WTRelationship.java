@@ -13,15 +13,13 @@ public class WTRelationship {
 	private String description;
 	private WTObject srcObject;
 	private WTObject destObject;
-	private int srcMultiplicity;
-	private int destMultiplicity;
+//	private int srcMultiplicity;
+//	private int destMultiplicity;
 	private int relationshipType;
 	
 	public WTRelationship(){
 		
 	}
-	
-	
 	
 	
 	public long getId() {
@@ -63,21 +61,21 @@ public class WTRelationship {
 		this.destObject = destObject;
 	}
 	
-	public int getSrcMultiplicity() {
-		return srcMultiplicity;
-	}
-	
-	public void setSrcMultiplicity(int srcMultiplicity) {
-		this.srcMultiplicity = srcMultiplicity;
-	}
-	
-	public int getDestMultiplicity() {
-		return destMultiplicity;
-	}
-	
-	public void setDestMultiplicity(int destMultiplicity) {
-		this.destMultiplicity = destMultiplicity;
-	}
+//	public int getSrcMultiplicity() {
+//		return srcMultiplicity;
+//	}
+//	
+//	public void setSrcMultiplicity(int srcMultiplicity) {
+//		this.srcMultiplicity = srcMultiplicity;
+//	}
+//	
+//	public int getDestMultiplicity() {
+//		return destMultiplicity;
+//	}
+//	
+//	public void setDestMultiplicity(int destMultiplicity) {
+//		this.destMultiplicity = destMultiplicity;
+//	}
 	
 	public void setRelationshipType(int type){
 		
