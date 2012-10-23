@@ -1,4 +1,4 @@
-package com.wintouch.dal.entityManager;
+package com.touchtone.wintouch.dal.entityManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,8 +7,8 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.ddlutils.Platform;
 
-import com.wintouch.dal.Configuration;
-import com.wintouch.dal.ddlManager.DDLManager;
+import com.touchtone.wintouch.dal.Configuration;
+import com.touchtone.wintouch.dal.ddlManager.DDLManager;
 
 public class EntityManager {
 	

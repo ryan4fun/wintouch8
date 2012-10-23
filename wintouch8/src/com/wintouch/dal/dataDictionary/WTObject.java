@@ -1,4 +1,4 @@
-package com.wintouch.dal.dataDictionary;
+package com.touchtone.wintouch.dal.dataDictionary;
 
 import java.util.ArrayList;
 import java.util.List;

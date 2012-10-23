@@ -1,9 +1,9 @@
-package com.wintouch.dal.entityManager;
+package com.touchtone.wintouch.dal.entityManager;
 
 import org.apache.commons.beanutils.DynaClass;
 import org.apache.ddlutils.dynabean.SqlDynaBean;
 
-import com.wintouch.dal.dataDictionary.WTObject;
+import com.touchtone.wintouch.dal.dataDictionary.WTObject;
 
 public class PersistenceObject extends SqlDynaBean{
 	

@@ -1,6 +1,6 @@
-package com.wintouch.dal.entityManager;
+package com.touchtone.wintouch.dal.entityManager;
 
-import com.wintouch.dal.DALException;
+import com.touchtone.wintouch.dal.DALException;
 
 public abstract class PersistenceAction {
 	

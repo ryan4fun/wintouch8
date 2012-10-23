@@ -1,4 +1,4 @@
-package com.wintouch.dal.ddlManager;
+package com.touchtone.wintouch.dal.ddlManager;
 
 import java.lang.reflect.InvocationTargetException;
 import java.sql.Connection;
@@ -21,11 +21,11 @@ import org.apache.ddlutils.model.Column;
 import org.apache.ddlutils.model.Database;
 import org.apache.ddlutils.model.Table;
 
-import com.wintouch.dal.Configuration;
-import com.wintouch.dal.DALException;
-import com.wintouch.dal.dataDictionary.WTAttribute;
-import com.wintouch.dal.dataDictionary.WTObject;
-import com.wintouch.dal.entityManager.PersistenceObject;
+import com.touchtone.wintouch.dal.Configuration;
+import com.touchtone.wintouch.dal.DALException;
+import com.touchtone.wintouch.dal.dataDictionary.WTAttribute;
+import com.touchtone.wintouch.dal.dataDictionary.WTObject;
+import com.touchtone.wintouch.dal.entityManager.PersistenceObject;
 
 public class DDLManager {
 

@@ -1,4 +1,4 @@
-package com.wintouch.dal.entityManager;
+package com.touchtone.wintouch.dal.entityManager;
 
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
