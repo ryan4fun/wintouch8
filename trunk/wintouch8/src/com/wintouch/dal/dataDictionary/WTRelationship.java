@@ -1,4 +1,4 @@
-package com.wintouch.dal.dataDictionary;
+package com.touchtone.wintouch.dal.dataDictionary;
 
 public class WTRelationship {
 
