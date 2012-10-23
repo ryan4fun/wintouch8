@@ -65,7 +65,7 @@ public class WTObject {
 		return this.relationList;
 	}
 	
-	public void removeAttribute(WTRelationship relation){
+	public void removeRelationship(WTRelationship relation){
 	
 		if(relation != null) {
 			int index = findRelationshipById(relation.getId());
