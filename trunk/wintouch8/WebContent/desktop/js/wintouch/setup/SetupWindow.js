@@ -37,7 +37,7 @@ Ext.define('Wintouch.setup.SetupWindow', {
 			layout : {
 				type : 'fit'
 			},
-			border : true,
+			border : true,			
 			defaults : {
 				autoScroll : true
 			}
