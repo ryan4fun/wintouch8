@@ -8,4 +8,6 @@ Ext.onReady(function() {
 	});
 
 	var viewport = Ext.create('Wintouch.Viewport', {});
+	
+	window.viewport = viewport;
 });

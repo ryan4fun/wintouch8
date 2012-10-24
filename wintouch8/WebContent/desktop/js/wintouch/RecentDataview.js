@@ -25,13 +25,7 @@ Ext.define('Wintouch.RecentDataview', {
 	initComponent : function() {		
 	 	this.store = Ext.create('Ext.data.Store', {
 	 		model : 'recent_list_model',
-	 		data : [ {
-	 			name : 'Touchtone',
-	 			img : 'touchtone.png'
-	 		}, {
-	 			name : 'Google Inc',
-	 			img : 'google.png'
-	 		} ]
+	 		data : []
 	 	});
 		this.callParent(arguments);	
 	}
