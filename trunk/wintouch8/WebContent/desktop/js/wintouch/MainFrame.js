@@ -7,18 +7,15 @@ Ext.define('Wintouch.MainFrame', {
 		layout : 'fit',
 		items : []
 	}, {
-		title : 'Accounts'
-	}, {
-		title : 'Persons'
-	}, {
-		title : 'Calendar'
-	}, {
-		title : 'Opportunities'
-	}, {
-		title : 'Reports'
-	}, {
-		title : 'Dashboards'
-	}, {
-		title : '+'
+		title : '+',
+		listeners : {
+			beforeactivate : function(){
+				var setupWindow = Ext.create('Wintouch.setup.SetupWindow', {
+					
+				});
+				setupWindow.show();
+				return false;
+			}
+		}
 	} ]
 });

@@ -25,13 +25,7 @@ Ext.define('Wintouch.CreateNewDataview', {
 	initComponent : function() {		
 	 	this.store = Ext.create('Ext.data.Store', {
 	 		model : 'createnew_list_model',
-	 		data : [ {
-	 			name : 'Account',
-	 			img : 'account_32.png'
-	 		}, {
-	 			name : 'Person',
-	 			img : 'person_32.png'
-	 		} ]
+	 		data : []
 	 	});
 		this.callParent(arguments);	
 	}
