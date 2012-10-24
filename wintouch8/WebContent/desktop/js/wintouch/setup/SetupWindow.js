@@ -1,6 +1,7 @@
 Ext.define('Wintouch.setup.SetupWindow', {
 	extend : 'Ext.window.Window',
 	alias : [ 'widget.setupwindow' ],
+	requires : ['Wintouch.setup.TableDesignPanel'],
 	title : 'Setup',
 	closable : true,
 	closeAction : 'hide',	
@@ -76,14 +77,24 @@ Ext.define('Wintouch.setup.SetupWindow', {
 								text : 'Accounts',
 								expanded : true,
 								children :  [ {
-									text : 'Data',
+									text : 'Table',
 									leaf : true,
 									icon : 'images/database_table_16.png'						
 								} ]
 							}]
 						} ]
 					}
-				})
+				}),
+				listeners : {
+					itemclick : {
+						fn : function(tree, record){
+							if(record.raw.text == 'Create New Object'){
+								tree.up('setupwindow').createNewObject();
+							}
+						},
+						scope : this
+					}
+				}
 			}]
 		}, {
 			title : 'Administrator Setup',
@@ -102,6 +113,7 @@ Ext.define('Wintouch.setup.SetupWindow', {
 	}, {
 		region : 'center',
 		xtype : 'panel',
+		itemId : 'center',
 		layout : 'fit',
 		items : []
 	} ],
@@ -111,6 +123,14 @@ Ext.define('Wintouch.setup.SetupWindow', {
 	 		width: parseInt(viewport.getWidth() * 0.7),
 	 	    height: parseInt(viewport.getHeight() * 0.8)
 		});
-		this.callParent(arguments);	
+		this.callParent(arguments);
+		
+		this.center = this.down('#center');
+	},
+	
+	createNewObject : function(){
+		this.center.add({
+			xtype : 'tabledesignpanel'
+		});
 	}
 });

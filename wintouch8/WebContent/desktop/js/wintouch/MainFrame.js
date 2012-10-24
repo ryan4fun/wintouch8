@@ -10,10 +10,7 @@ Ext.define('Wintouch.MainFrame', {
 		title : '+',
 		listeners : {
 			beforeactivate : function(){
-				var setupWindow = Ext.create('Wintouch.setup.SetupWindow', {
-					
-				});
-				setupWindow.show();
+				
 				return false;
 			}
 		}

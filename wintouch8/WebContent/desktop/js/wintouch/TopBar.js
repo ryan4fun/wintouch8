@@ -61,7 +61,10 @@ Ext.define('Wintouch.TopBar', {
 						text : 'Setup',
 						listeners : {
 							click : function(menu, item) {
-								
+								var setupWindow = Ext.create('Wintouch.setup.SetupWindow', {
+									
+								});
+								setupWindow.show();
 							}
 						}
 					}, {
