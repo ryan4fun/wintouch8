@@ -75,12 +75,14 @@ Ext.define('Wintouch.setup.SetupWindow', {
 								leaf : true,
 								icon : 'images/add1_16.gif'
 							}, {
-								text : 'Accounts',
+								text : 'Account',
 								expanded : true,
 								children :  [ {
-									text : 'Table',
+									text : 'Table Definition',
 									leaf : true,
-									icon : 'images/database_table_16.png'						
+									icon : 'images/database_table_16.png',
+									actionType : 'Def',
+									tableName : 'Account'
 								} ]
 							}]
 						} ]
@@ -91,6 +93,8 @@ Ext.define('Wintouch.setup.SetupWindow', {
 						fn : function(tree, record){
 							if(record.raw.text == 'Create New Object'){
 								tree.up('setupwindow').createNewObject();
+							} else if(record.raw.actionType == 'Def'){
+								tree.up('setupwindow').editTableDefinition(record.raw.tableName);
 							}
 						},
 						scope : this
@@ -116,7 +120,13 @@ Ext.define('Wintouch.setup.SetupWindow', {
 		xtype : 'panel',
 		itemId : 'center',
 		layout : 'fit',
-		items : []
+		items : [],
+		listeners : {
+			beforeadd : function(panel){
+				panel.removeAll(true);
+				return true;
+			}
+		}
 	} ],
 	
 	initComponent : function() {
@@ -132,6 +142,12 @@ Ext.define('Wintouch.setup.SetupWindow', {
 	createNewObject : function(){
 		this.center.add({
 			xtype : 'tabledesignpanel'
+		});
+	},
+	editTableDefinition : function(tableName){
+		this.center.add({
+			xtype : 'tabledesignpanel',
+			tableName : tableName
 		});
 	}
 });
