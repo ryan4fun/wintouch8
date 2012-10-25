@@ -74,7 +74,8 @@ Ext.define('Wintouch.setup.FieldDesignWindow', {
 				}, {
 					xtype : 'numberfield',
 					fieldLabel : 'Length',
-					width : 170,
+					labelWidth : 60,
+					width : 130,
 					value: 10,
 			        minValue: 1
 				}, {
