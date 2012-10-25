@@ -137,7 +137,7 @@ Ext.define('Wintouch.setup.TableDesignPanel', {
 					var fieldWindow = Ext.create('Wintouch.setup.FieldDesignWindow', {
 						onSaved : {
 							fn : function (basicRecord){
-								this.fieldGrid.store.loadRecords([basicRecord]);
+								this.fieldGrid.store.loadData([basicRecord], true);
 							},
 							scope : btn.up('tabledesignpanel')
 						}
@@ -179,5 +179,16 @@ Ext.define('Wintouch.setup.TableDesignPanel', {
 		}
 		
 		this.fieldGrid = this.down('gridpanel');
+		this.fieldGrid.on('selectionchange', this.resetButtonStatus, this);
+	},
+	
+	resetButtonStatus : function(selectionModel, selectedRecords){
+		if(selectedRecords.length == 1){
+			this.down('#prop_btn').enable();
+			this.down('#delete_btn').enable();
+		} else {
+			this.down('#prop_btn').disable();
+			this.down('#delete_btn').disable();
+		}
 	}
 });
