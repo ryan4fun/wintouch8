@@ -1,7 +1,7 @@
 Ext.define('Wintouch.MainFrame', {
 	extend : 'Ext.tab.Panel',
 	alias : [ 'widget.mainframe' ],
-	region : 'center',
+	region : 'center',	
 	items : [ {
 		title : 'Home',
 		layout : 'fit',

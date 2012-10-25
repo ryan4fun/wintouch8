@@ -6,6 +6,7 @@ Ext.define('Wintouch.setup.SetupWindow', {
 	closable : true,
 	closeAction : 'hide',	
 	floating : true,
+	modal : true,
 	border : false,
 	center : true,
 	layout : {

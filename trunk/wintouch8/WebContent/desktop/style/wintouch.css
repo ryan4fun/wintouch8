@@ -6,6 +6,22 @@
 	background-image: url(../images/history_16.png);
 }
 
+.properties-icon {
+    background-image: url(../images/properties_16.png);
+}
+
+.database-edit-icon {
+    background-image: url(../images/database_edit_16.png);
+}
+
+.events-icon {
+    background-image: url(../images/event_16.png);
+}
+
+.validation-icon {
+    background-image: url(../images/validation_16.png);
+}
+
 .list-item {
 	padding: 1px 10px 1px 10px;
 	font-size: 11px;

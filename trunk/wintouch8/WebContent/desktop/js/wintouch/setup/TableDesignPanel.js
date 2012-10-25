@@ -19,6 +19,7 @@ Ext.define('FieldDefinition', {
 Ext.define('Wintouch.setup.TableDesignPanel', {
 	extend : 'Ext.form.Panel',
 	alias : [ 'widget.tabledesignpanel' ],
+	requires : ['Wintouch.setup.FieldDesignWindow'],
 	border : false,
 	bodyBorder : false,
 	title : 'Create New Object',
@@ -106,23 +107,19 @@ Ext.define('Wintouch.setup.TableDesignPanel', {
 				icon : 'images/add1_16.gif',
 				text : 'Add',
 				tooltip : 'Add',
+				width : 65,
 				handler : function(btn) {
+					var fieldWindow = Ext.create('Wintouch.setup.FieldDesignWindow', {
+						
+					});
 					
+					fieldWindow.show();
 				}
 			}, '->', {
-				itemId : 'event_btn',
-				icon : 'images/event_16.png',
-				text : 'Events',
-				tooltip : 'Events',			
-				disabled : true,
-				handler : function(btn) {
-					
-				}
-			}, {
-				itemId : 'validation_btn',
-				icon : 'images/validation_16.png',
-				text : 'Validation',
-				tooltip : 'Validation',			
+				itemId : 'prop_btn',
+				icon : 'images/properties_16.png',
+				text : 'Properties',
+				tooltip : 'Properties',			
 				disabled : true,
 				handler : function(btn) {
 					
