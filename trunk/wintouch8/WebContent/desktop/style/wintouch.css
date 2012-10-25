@@ -54,3 +54,12 @@
 	color: #666;
 	text-decoration: underline;
 }
+
+.section_panel .x-panel-header {
+    background-color : #F8F8F8 !important;
+    background-image : none !important;
+}
+
+.section_panel .x-panel-header-text {   
+    font-weight : normal !important;
+}

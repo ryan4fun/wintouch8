@@ -10,10 +10,25 @@ Ext.define('FieldDefinition', {
 		name : 'DataType',
 		type : 'string'
 	}, {
-		name : 'IntergrationName',
+		name : 'Length',
+		type : 'number'
+	}, {
+		name : 'DefaultValue',
 		type : 'string'
+	}, {
+		name : 'InputMask',
+		type : 'string'
+	}, {
+		name : 'Required',
+		type : 'boolean'
+	}, {
+		name : 'Readonly',
+		type : 'boolean'
+	}, {
+		name : 'Index',
+		type : 'boolean'
 	} ],
-	idProperty : 'list_id'
+	idProperty : 'FieldName'
 });
 
 Ext.define('Wintouch.setup.TableDesignPanel', {
@@ -22,14 +37,16 @@ Ext.define('Wintouch.setup.TableDesignPanel', {
 	requires : ['Wintouch.setup.FieldDesignWindow'],
 	border : false,
 	bodyBorder : false,
-	title : 'Create New Object',
 	layout : {
 		type : 'vbox',
 		align : 'center'
 	},
 	defaults : {
 		width : '100%',
-		margin : 1
+		margin : 1,
+		cls : 'section_panel',
+		border : false,
+		bodyBorder : false
 	},
 	dockedItems : [{
 		xtype : 'toolbar',
@@ -39,9 +56,9 @@ Ext.define('Wintouch.setup.TableDesignPanel', {
 			'background-image': 'none'
 		},
 		items : ['->', {
-			icon : 'images/ok_16.png',
-			text : 'Create',
-			tooltip : 'Create',
+			itemId : 'ok',
+			icon : 'images/ok_16.png',			
+			width : '80',
 			handler : function(btn) {
 				
 			}
@@ -52,7 +69,7 @@ Ext.define('Wintouch.setup.TableDesignPanel', {
 		title : 'Object Property',
 		collapsible : true,
 		flex : 1,
-		bodyPadding : 5,
+		bodyPadding : 8,
 		layout : {
 			type : 'table',
 			columns : 1
@@ -78,18 +95,26 @@ Ext.define('Wintouch.setup.TableDesignPanel', {
 		columns : [ {
 			text : 'Field Name',
 			dataIndex : 'FieldName',
-			flex : 1
+			flex : 2
 		}, {
 			text : 'Field Label',
 			dataIndex : 'FieldLabel',
-			flex : 1
+			flex : 2
 		}, {
 			text : 'Data Type',
 			dataIndex : 'DataType',
 			flex : 1
 		}, {
-			text : 'Intergration Name',
-			dataIndex : 'IntergrationName',
+			text : 'Length',
+			dataIndex : 'Length',
+			flex : 1
+		}, {
+			text : 'Required',
+			dataIndex : 'Required',
+			flex : 1
+		}, {
+			text : 'Readonly',
+			dataIndex : 'Readonly',
 			flex : 1
 		} ],
 		dockedItems : [ {
@@ -110,7 +135,12 @@ Ext.define('Wintouch.setup.TableDesignPanel', {
 				width : 65,
 				handler : function(btn) {
 					var fieldWindow = Ext.create('Wintouch.setup.FieldDesignWindow', {
-						
+						onSaved : {
+							fn : function (basicRecord){
+								this.fieldGrid.store.loadRecords([basicRecord]);
+							},
+							scope : btn.up('tabledesignpanel')
+						}
 					});
 					
 					fieldWindow.show();
@@ -138,7 +168,16 @@ Ext.define('Wintouch.setup.TableDesignPanel', {
 	} ],
 
 	initComponent : function() {
-
 		this.callParent(arguments);
+		
+		if(this.tableName){
+			this.setTitle(this.tableName + ' --- Table Definition');
+			this.getDockedComponent(1).getComponent('ok').setText('Save');
+		} else {
+			this.setTitle('Create New Object');
+			this.getDockedComponent(1).getComponent('ok').setText('Create');
+		}
+		
+		this.fieldGrid = this.down('gridpanel');
 	}
 });
