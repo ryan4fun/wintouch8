@@ -22,7 +22,7 @@ Ext.define('FieldDefinition', {
 		name : 'Required',
 		type : 'boolean'
 	}, {
-		name : 'Readonly',
+		name : 'ReadOnly',
 		type : 'boolean'
 	}, {
 		name : 'Index',
@@ -113,8 +113,8 @@ Ext.define('Wintouch.setup.TableDesignPanel', {
 			dataIndex : 'Required',
 			flex : 1
 		}, {
-			text : 'Readonly',
-			dataIndex : 'Readonly',
+			text : 'ReadOnly',
+			dataIndex : 'ReadOnly',
 			flex : 1
 		} ],
 		dockedItems : [ {
@@ -134,16 +134,7 @@ Ext.define('Wintouch.setup.TableDesignPanel', {
 				tooltip : 'Add',
 				width : 65,
 				handler : function(btn) {
-					var fieldWindow = Ext.create('Wintouch.setup.FieldDesignWindow', {
-						onSaved : {
-							fn : function (basicRecord){
-								this.fieldGrid.store.loadData([basicRecord], true);
-							},
-							scope : btn.up('tabledesignpanel')
-						}
-					});
-					
-					fieldWindow.show();
+					btn.up('tabledesignpanel').openFieldDesignWindow(true);
 				}
 			}, '->', {
 				itemId : 'prop_btn',
@@ -152,7 +143,7 @@ Ext.define('Wintouch.setup.TableDesignPanel', {
 				tooltip : 'Properties',			
 				disabled : true,
 				handler : function(btn) {
-					
+					btn.up('tabledesignpanel').openFieldDesignWindow();
 				}
 			}, {
 				itemId : 'delete_btn',
@@ -161,7 +152,7 @@ Ext.define('Wintouch.setup.TableDesignPanel', {
 				tooltip : 'Delete',			
 				disabled : true,
 				handler : function(btn) {
-					
+					btn.up('tabledesignpanel').deleteField();
 				}
 			} ]
 		} ]
@@ -180,6 +171,33 @@ Ext.define('Wintouch.setup.TableDesignPanel', {
 		
 		this.fieldGrid = this.down('gridpanel');
 		this.fieldGrid.on('selectionchange', this.resetButtonStatus, this);
+		this.fieldGrid.on('itemdblclick', function(grid, record){
+			 this.openFieldDesignWindow(false);
+		}, this);
+	},
+	
+	openFieldDesignWindow : function(isNew){
+		var basicRecord;
+		if(!isNew){
+			basicRecord = this.fieldGrid.getSelectionModel().getSelection()[0];
+		}
+		var fieldWindow = Ext.create('Wintouch.setup.FieldDesignWindow', {
+			basicRecord : basicRecord,
+			onSaved : {
+				fn : function (basicRecord){
+					this.fieldGrid.store.loadData([basicRecord], true);
+				},
+				scope : this
+			}
+		});
+		
+		fieldWindow.show();
+	},
+	
+	deleteField : function(){
+		var record = this.fieldGrid.getSelectionModel().getSelection()[0];
+		
+		this.fieldGrid.store.remove(record);
 	},
 	
 	resetButtonStatus : function(selectionModel, selectedRecords){

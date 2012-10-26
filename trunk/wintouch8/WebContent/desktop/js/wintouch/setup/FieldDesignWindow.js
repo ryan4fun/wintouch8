@@ -18,12 +18,7 @@ Ext.define('Wintouch.setup.FieldDesignWindow', {
 		text : 'OK',
 		icon : 'images/ok_16.png',
 		handler : function(btn) {
-			var onSaved = btn.up('fielddesignwindow').onSaved;
-			var record = btn.up('fielddesignwindow').getBasicRecord();
-			
-			onSaved.fn.call(onSaved.scope, record);
-			
-			btn.up('fielddesignwindow').close();
+			btn.up('fielddesignwindow').performOK();
 		}
 	}, {
 		text : 'Cancel',
@@ -81,7 +76,8 @@ Ext.define('Wintouch.setup.FieldDesignWindow', {
 					queryMode : 'local',
 					displayField : 'text',
 					valueField : 'value',
-					width : 300
+					width : 300,
+					allowBlank : false
 				}, {
 					xtype : 'numberfield',
 					name : 'Length',
@@ -89,17 +85,20 @@ Ext.define('Wintouch.setup.FieldDesignWindow', {
 					labelWidth : 60,
 					width : 130,
 					value: 10,
-			        minValue: 1
+			        minValue: 1,
+					allowBlank : false
 				}, {
 					name : 'FieldName',
 					fieldLabel : 'Field Name',
 					colspan : 2,
-					width : 300
+					width : 300,
+					allowBlank : false
 				}, {
 					name : 'FieldLabel',
 					fieldLabel : 'Field Label',
 					colspan : 2,
-					width : 300
+					width : 300,
+					allowBlank : false
 				}, {
 					name : 'DefaultValue',
 					fieldLabel : 'Default Value',
@@ -127,7 +126,7 @@ Ext.define('Wintouch.setup.FieldDesignWindow', {
 					boxLabel : 'This field is required.',
 					width : 250
 				}, {
-					name : 'Readonly',
+					name : 'ReadOnly',
 					xtype : 'checkbox',
 					boxLabel : 'This field is readonly.',
 					width : 250
@@ -136,7 +135,8 @@ Ext.define('Wintouch.setup.FieldDesignWindow', {
 					xtype : 'checkbox',
 					boxLabel : 'Index this field as part of text search engine',
 					width : 500,
-					colspan : 2
+					colspan : 2,
+					disabled : true
 				} ]
 			} ]
 		}, {
@@ -154,12 +154,32 @@ Ext.define('Wintouch.setup.FieldDesignWindow', {
 		this.callParent(arguments);
 		
 		if(this.basicRecord){
-			this.down('#basicForm').loadRecord(this.basicRecord);			
+			this.down('#basicForm').loadRecord(this.basicRecord);
+			this.down('[name="FieldName"]').setReadOnly(true);
+		}
+	},
+	
+	performOK : function(){
+		if(this.down('#basicForm').isValid()){
+			var onSaved = this.onSaved;
+			var record = this.getBasicRecord();
+			
+			onSaved.fn.call(onSaved.scope, record);
+			
+			this.close();
 		}
 	},
 	
 	getBasicRecord : function(){
-		var record = Ext.create('FieldDefinition', this.down('#basicForm').getValues());
+		if(this.basicRecord){
+			record = this.basicRecord;
+			var values = this.down('#basicForm').getValues();
+			for(var key in values){
+				record.set(key, values[key]);
+			}
+		} else {
+			record = Ext.create('FieldDefinition', this.down('#basicForm').getValues());
+		}
 		
 		return record;			
 	}
