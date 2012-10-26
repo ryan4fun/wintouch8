@@ -81,7 +81,13 @@ Ext.define('Wintouch.setup.SetupWindow', {
 									text : 'Table Definition',
 									leaf : true,
 									icon : 'images/database_table_16.png',
-									actionType : 'Def',
+									actionType : 'Definition',
+									tableName : 'Account'
+								}, {
+									text : 'Table Relationship',
+									leaf : true,
+									icon : 'images/table_relationship_16.png',
+									actionType : 'Relationship',
 									tableName : 'Account'
 								} ]
 							}]
@@ -93,7 +99,7 @@ Ext.define('Wintouch.setup.SetupWindow', {
 						fn : function(tree, record){
 							if(record.raw.text == 'Create New Object'){
 								tree.up('setupwindow').createNewObject();
-							} else if(record.raw.actionType == 'Def'){
+							} else if(record.raw.actionType == 'Definition'){
 								tree.up('setupwindow').editTableDefinition(record.raw.tableName);
 							}
 						},
